@@ -1,0 +1,39 @@
+.constructor{
+
+    /*test*/
+    background-color: #eeeeee;
+height: 52.858em;;
+    margin-top: 2em;
+}
+
+.constructor-container{
+    background: -webkit-radial-gradient(circle, #fdfdfd, #bbb1b1); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(circle, #fdfdfd, #bbb1b1); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle,#fdfdfd, #bbb1b1); /* For Fx 3.6 to 15 */
+    background: radial-gradient(circle, #fdfdfd, #bbb1b1); /* Standard syntax (must be last) */
+    height: 52.858em;;
+
+}
+.constructor-container img{
+
+    padding: 5em;
+}
+.constructor-panel-list-filters .btn-group{
+    margin: 1em 0px;
+}
+.constructor-panel-list-filters .btn-group,
+.constructor-panel-list-filters .btn-group .dropdown-toggle,
+.constructor-panel-list-filters .btn-group .dropdown-menu{
+    width: 100%;
+}
+
+.constructor-panel-list-view{
+    background-color: white;
+    padding: 1em 0.5em;
+    height: 26em;
+    overflow: auto;
+}
+
+.constructor-panel-list-view .col-md-4{
+    padding: 0em 0.5em;
+}
