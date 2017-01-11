@@ -1,9 +1,8 @@
-"use strict";
-
 /**
  * Created by ruslan on 11.01.17.
  */
 
-var a = 5;
+
+let a = 7;
 
 console.log(a);

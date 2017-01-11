@@ -5,7 +5,7 @@ module.exports = {
     context: __dirname + "/src",
 
     entry: {
-        app: "./index.js"
+        app: "./app/script.js"
     },
     output: {
         path: "./publish",
