@@ -31,327 +31,111 @@ webpackJsonp([0,1],[
 	        _react2.default.createElement(
 	            'div',
 	            { className: 'constructor-container center-block' },
-	            _react2.default.createElement('img', {
-	                src: props.clockView,
+	            _react2.default.createElement('img', { className: 'vinyl-view',
+	                src: props.clockView.vinyls,
+	                alt: '' }),
+	            _react2.default.createElement('img', { className: 'dial-view',
+	                src: props.clockView.dials,
+	                alt: '' }),
+	            _react2.default.createElement('img', { className: 'hands-view',
+	                src: props.clockView.hands,
 	                alt: '' })
 	        )
 	    );
 	}
 
-	var ConstructorPanelNavigation = function (_React$Component) {
-	    _inherits(ConstructorPanelNavigation, _React$Component);
+	/* left block for construction */
 
-	    function ConstructorPanelNavigation() {
-	        _classCallCheck(this, ConstructorPanelNavigation);
+	var ConstructorPanelBlock = function (_React$Component) {
+	    _inherits(ConstructorPanelBlock, _React$Component);
 
-	        return _possibleConstructorReturn(this, (ConstructorPanelNavigation.__proto__ || Object.getPrototypeOf(ConstructorPanelNavigation)).apply(this, arguments));
+	    function ConstructorPanelBlock() {
+	        _classCallCheck(this, ConstructorPanelBlock);
+
+	        return _possibleConstructorReturn(this, (ConstructorPanelBlock.__proto__ || Object.getPrototypeOf(ConstructorPanelBlock)).apply(this, arguments));
 	    }
 
-	    _createClass(ConstructorPanelNavigation, [{
+	    _createClass(ConstructorPanelBlock, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'ul',
-	                { className: 'nav nav-tabs nav-justified' },
+	                'div',
+	                { className: 'col-sm-4 constructor-panel-block' },
 	                _react2.default.createElement(
-	                    'li',
-	                    { role: 'presentation', className: 'active' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '#' },
-	                        '\u041F\u043B\u0430\u0441\u0442\u0456\u043D\u043A\u0438'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'li',
-	                    { role: 'presentation' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '#' },
-	                        '\u0426\u0438\u0444\u0435\u0440\u0431\u043B\u0430\u0442\u0438'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'li',
-	                    { role: 'presentation' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '#' },
-	                        '\u0421\u0442\u0440\u0456\u043B\u043A\u0438'
-	                    )
+	                    'div',
+	                    { className: 'constructor-panel' },
+	                    _react2.default.createElement(ConstructorPanelNavigation, null),
+	                    _react2.default.createElement(ConstructorPanelList, null)
 	                )
 	            );
 	        }
 	    }]);
 
-	    return ConstructorPanelNavigation;
+	    return ConstructorPanelBlock;
 	}(_react2.default.Component);
 
-	function ConstructorPanelBlock(props) {
-
+	function ConstructorPanelNavigation() {
 	    return _react2.default.createElement(
-	        'div',
-	        { className: 'col-sm-4 constructor-panel-block' },
+	        'ul',
+	        { className: 'nav nav-tabs nav-justified' },
 	        _react2.default.createElement(
-	            'div',
-	            { className: 'constructor-panel' },
-	            _react2.default.createElement(ConstructorPanelNavigation, null),
+	            'li',
+	            { role: 'presentation', className: 'active' },
 	            _react2.default.createElement(
-	                'div',
-	                { className: 'constructor-panel-list' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'constructor-panel-list-filters' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'btn-group' },
-	                        _react2.default.createElement(
-	                            'button',
-	                            { type: 'button', className: 'btn btn-default dropdown-toggle',
-	                                'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-	                            '\u0423\u0441\u0456 ',
-	                            _react2.default.createElement('span', { className: 'caret' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'ul',
-	                            { className: 'dropdown-menu' },
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '#' },
-	                                    '\u0423\u0441\u0456'
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '#' },
-	                                    '\u0424\u0456\u043B\u044C\u043C\u0438'
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '#' },
-	                                    '\u041C\u0443\u043B\u044C\u0442\u0444\u0456\u043B\u044C\u043C\u0438'
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: '#' },
-	                                    '\u041C\u0443\u0437\u0438\u043A\u0430'
-	                                )
-	                            )
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-12 constructor-panel-list-view' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail item-vinyl' },
-	                            _react2.default.createElement('img', {
-	                                src: 'https://lh3.googleusercontent.com/oTB_9IbUmbEBtIv_8LdJfGJthzx-8S4UmdxakENzPyYXMizOaDBke7ZnT7ONNqoVr1hSPyTLthB9vQ=w1855-h966-rw',
-	                                alt: '...',
-	                                onClick: props.onClickSelectVinyl
-	                            })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'https://lh5.googleusercontent.com/BilGV9eQOu_iNalyYO-feYcBE4FQrVv4mbV4v5XQ_GqOswS1j2-4gfkBiKjrUNrO9qn-7jR7w9RkLA=w1855-h966-rw',
-	                                alt: '...',
-	                                onClick: props.onClickSelectVinyl
-	                            })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'https://lh4.googleusercontent.com/QSxsk5H45Pq3pzDk4YbvXcJFNbZG9n057epHR8ftbbTuCnD_HyOQABBGKa7OPQ5-VwYA8bdPhWliwg=w1855-h966-rw',
-	                                alt: '...',
-	                                onClick: props.onClickSelectVinyl })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-xs-6 col-md-4' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', className: 'thumbnail' },
-	                            _react2.default.createElement('img', {
-	                                src: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU5OGQxZmI2ZDAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTk4ZDFmYjZkMCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI1OS4zMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+',
-	                                alt: '...' })
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'col-sm-12 ' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'button', className: 'btn btn-success ' },
-	                        '\u0413\u043E\u0442\u043E\u0432\u043E'
-	                    )
-	                )
+	                'a',
+	                { href: '#' },
+	                '\u0426\u0438\u0444\u0435\u0440\u0431\u043B\u0430\u0442\u0438'
+	            )
+	        ),
+	        _react2.default.createElement(
+	            'li',
+	            { role: 'presentation' },
+	            _react2.default.createElement(
+	                'a',
+	                { href: '#' },
+	                '\u0421\u0442\u0440\u0456\u043B\u043A\u0438'
 	            )
 	        )
 	    );
 	}
+
+	function ConstructorPanelList() {
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'constructor-panel-list' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'col-sm-12 constructor-panel-list-view' },
+	            _react2.default.createElement(ConstructorPanelListItem, null)
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'col-sm-12 ' },
+	            _react2.default.createElement(
+	                'button',
+	                { type: 'button', className: 'btn btn-success ' },
+	                '\u0413\u043E\u0442\u043E\u0432\u043E'
+	            )
+	        )
+	    );
+	}
+
+	function ConstructorPanelListItem(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'col-xs-6 col-md-4' },
+	        _react2.default.createElement(
+	            'a',
+	            { href: '#', className: 'thumbnail item-vinyl' },
+	            _react2.default.createElement('img', {
+	                src: props.url,
+	                alt: '...',
+	                onClick: props.onClickSelect
+	            })
+	        )
+	    );
+	}
+	/* Root App Component */
 
 	var ClockConstructor = function (_React$Component2) {
 	    _inherits(ClockConstructor, _React$Component2);
@@ -364,26 +148,32 @@ webpackJsonp([0,1],[
 	        _this2.state = {
 	            data: {
 	                url: {
-	                    vinyls: ["https://lh3.googleusercontent.com/oTB_9IbUmbEBtIv_8LdJfGJthzx-8S4UmdxakENzPyYXMizOaDBke7ZnT7ONNqoVr1hSPyTLthB9vQ=w1855-h966-rw", "https://lh5.googleusercontent.com/BilGV9eQOu_iNalyYO-feYcBE4FQrVv4mbV4v5XQ_GqOswS1j2-4gfkBiKjrUNrO9qn-7jR7w9RkLA=w1855-h966-rw", "https://lh4.googleusercontent.com/QSxsk5H45Pq3pzDk4YbvXcJFNbZG9n057epHR8ftbbTuCnD_HyOQABBGKa7OPQ5-VwYA8bdPhWliwg=w1855-h966-rw"],
+	                    /*vinyls: ["",
+	                        "https://lh5.googleusercontent.com/BilGV9eQOu_iNalyYO-feYcBE4FQrVv4mbV4v5XQ_GqOswS1j2-4gfkBiKjrUNrO9qn-7jR7w9RkLA=w1855-h966-rw",
+	                        "https://lh4.googleusercontent.com/QSxsk5H45Pq3pzDk4YbvXcJFNbZG9n057epHR8ftbbTuCnD_HyOQABBGKa7OPQ5-VwYA8bdPhWliwg=w1855-h966-rw"
+	                    ],*/
 
-	                    dials: [],
-	                    hands: [],
-
-	                    template: "https://lh6.googleusercontent.com/sZUv20YDxEiDqMtAACQjo9TVnY1Lh-zTroxdefNiq4DHiPL4dmOtxAV_h0UeybIThzfPbJ1DWxdx0w=w1855-h966-rw"
+	                    dials: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTiw_LCy5zSQBIttIJpydFwN0uWuBys-iIMoI8Z0_K4bUoJWfF5", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSJPojTE0t0_BWauA9w7SfXhTvtAfDI9vkBteVTIRA9U0hLCJFb", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5b9BCpzLQujYx83B9H2D_m3E9cJFmWn4Mo3VZOIL3i32m5sH0", "http://www.clipartbest.com/cliparts/4Tb/4Ao/4Tb4AoGEc.png"],
+	                    hands: ["../src/images/h1.png", "../src/images/h2.png", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRt3UdEXolFOr8qCZmAMNtgdqAgdvcP-x1mbydOXi285dHh_WSo", "http://www.electrictime.com/wp-content/themes/etime-canvas/dial-hands/images/hand_AS.gif", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=55428835"]
 
 	                },
-	                clockView: ""
+	                clockView: {
+	                    vinyls: "../src/images/1.png",
+	                    dials: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA",
+	                    hands: "../src/images/h1.png"
+	                }
 	            }
 	        };
-	        _this2.onClickSelectVinyl = _this2.onClickSelectVinyl.bind(_this2);
+	        _this2.onClickSelect = _this2.onClickSelect.bind(_this2);
 	        return _this2;
 	    }
 
 	    _createClass(ClockConstructor, [{
-	        key: 'onClickSelectVinyl',
-	        value: function onClickSelectVinyl(element) {
+	        key: 'onClickSelect',
+	        value: function onClickSelect(element) {
 
-	            console.log(this.state.data.clockView);
+	            console.log(element.target.parentNode);
+
 	            this.setState({
 	                data: {
 	                    clockView: element.target.src
@@ -400,8 +190,8 @@ webpackJsonp([0,1],[
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
-	                    _react2.default.createElement(ConstructorContainerBlock, { clockView: this.state.data.clockView ? this.state.data.clockView : this.state.data.url.template }),
-	                    _react2.default.createElement(ConstructorPanelBlock, { onClickSelectVinyl: this.onClickSelectVinyl })
+	                    _react2.default.createElement(ConstructorContainerBlock, { clockView: this.state.data.clockView }),
+	                    _react2.default.createElement(ConstructorPanelBlock, { onClickSelect: this.onClickSelect, dataUrl: this.state.data.url })
 	                )
 	            );
 	        }
