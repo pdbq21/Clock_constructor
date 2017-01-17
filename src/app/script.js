@@ -37,36 +37,42 @@ function ConstructorContainerBlock(props) {
 
 
 
-class ConstructorPanelBlock extends React.Component{
-    render(){
-        return (
-            <div className="col-sm-4 constructor-panel-block">
+function ConstructorPanelBlock(props){
+            return (
                 <div className="constructor-panel">
-                    <ConstructorPanelNavigation />
-                    <ConstructorPanelList />
+                    <ConstructorPanelNavigation
+                        onClickNavigation={props.onClickNavigation}
+                    />
+                    <ConstructorPanelList
+                        dataImagesItems={props.dataImagesUrl}
+                        onClickSelect={props.onClickSelect}
+                    />
                 </div>
-            </div>
         );
-    }
-
 }
 
-function ConstructorPanelNavigation() {
+function ConstructorPanelNavigation(props) {
     return (
-        <ul className="nav nav-tabs nav-justified">
-            <li role="presentation" className="active"><a href="#">Циферблати</a></li>
-            <li role="presentation"><a href="#">Стрілки</a></li>
+        <ul className="nav nav-tabs nav-justified" onClick={props.onClickNavigation}>
+            <li role="presentation" className="navigation active"><a href="#" >Циферблати</a></li>
+            <li role="presentation" className="navigation"><a href="#">Стрілки</a></li>
         </ul>
     );
 }
 
-function ConstructorPanelList() {
+function ConstructorPanelList(props) {
+    let {dataImagesItems, onClickSelect} = props;
     return (
         <div className="constructor-panel-list">
 
-            <div className="col-sm-12 constructor-panel-list-view">
+            <div className="col-sm-12 constructor-panel-list-view" >
 
-                <ConstructorPanelListItem />
+                {dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItem
+                    imageUrl={imageUrl}
+                    onClickSelectItem={onClickSelect}
+                    className={key}
+                />)}
+
 
             </div>
 
@@ -81,13 +87,16 @@ function ConstructorPanelList() {
 }
 
 function ConstructorPanelListItem(props) {
+    let {imageUrl, onClickSelectItem, className} = props;
     return (
         <div className="col-xs-6 col-md-4">
             <a href="#" className="thumbnail item-vinyl">
                 <img
-                    src={props.url}
+                    src={imageUrl}
                     alt="..."
-                    onClick={props.onClickSelect}
+                    onClick={onClickSelectItem}
+                    className={className}
+                    id=""
                 />
 
             </a>
@@ -103,18 +112,12 @@ class ClockConstructor extends React.Component {
         this.state = {
             data: {
                 url: {
-                    /*vinyls: ["",
-                        "https://lh5.googleusercontent.com/BilGV9eQOu_iNalyYO-feYcBE4FQrVv4mbV4v5XQ_GqOswS1j2-4gfkBiKjrUNrO9qn-7jR7w9RkLA=w1855-h966-rw",
-                        "https://lh4.googleusercontent.com/QSxsk5H45Pq3pzDk4YbvXcJFNbZG9n057epHR8ftbbTuCnD_HyOQABBGKa7OPQ5-VwYA8bdPhWliwg=w1855-h966-rw"
-                    ],*/
-
                     dials: [
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA",
                         "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTiw_LCy5zSQBIttIJpydFwN0uWuBys-iIMoI8Z0_K4bUoJWfF5",
                         "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSJPojTE0t0_BWauA9w7SfXhTvtAfDI9vkBteVTIRA9U0hLCJFb",
                         "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5b9BCpzLQujYx83B9H2D_m3E9cJFmWn4Mo3VZOIL3i32m5sH0",
                         "http://www.clipartbest.com/cliparts/4Tb/4Ao/4Tb4AoGEc.png"
-
                     ],
                     hands: [
                         "../src/images/h1.png",
@@ -130,34 +133,90 @@ class ClockConstructor extends React.Component {
                     dials: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA",
                     hands: "../src/images/h1.png"
                 }
-            }
+            },
+            activeNavigation: true // true - active dials / false - active hands
         };
         this.onClickSelect = this.onClickSelect.bind(this);
+        this.onClickNavigation = this.onClickNavigation.bind(this);
     }
 
     onClickSelect(element) {
 
-        console.log(element.target.parentNode);
+        let activeDialKey,
+            activeDial,
+            activeHandKey,
+            activeHand;
+        if (this.state.activeNavigation){
+            if ( element.target.id === "active-dials"){
+                element.target.id = "";
+            }else{
+                if (document.querySelector('#active-dials')){
+                    document.querySelector('#active-dials').id="";
+                }
+                element.target.id = "active-dials";
+                activeDialKey = parseInt(document.querySelector("#active-dials").className);
+            }
+        }else{
+            if ( element.target.id === "active-hands"){
+                element.target.id = "";
+            }else{
+                if (document.querySelector('#active-hands')){
+                    document.querySelector('#active-hands').id="";
+                }
+                element.target.id = "active-hands";
+                activeHandKey = parseInt(document.getElementById("active-hands").className);
+            }
+        }
+
+        activeDial = this.state.data.url.dials[activeDialKey];
+        activeHand = this.state.data.url.hands[activeHandKey];
+       // element.target.id = `active-${(this.state.activeNavigation)? 'dials' : 'hands'}`;
 
         this.setState({
             data: {
-                clockView: element.target.src
+                clockView: {
+                    dials: activeDial,
+                    hands: activeHand
+                }
             }
         });
+    }
 
+    onClickNavigation(){
+        this.setState({
+            activeNavigation: !this.state.activeNavigation
+        });
 
+       let elementsNavigation = document.querySelectorAll(".navigation");
+       if (this.state.activeNavigation){
+           // navigation 0 - dials; 1 - hands;
+           elementsNavigation[0].className = 'navigation';
+           elementsNavigation[1].className = 'navigation active';
+       }else{
+           elementsNavigation[1].className = 'navigation';
+           elementsNavigation[0].className = 'navigation active';
+       }
 
     }
+
+
 
     render() {
 
         return (
             <div className="container constructor">
                 <div className="row">
-                    <ConstructorContainerBlock clockView={this.state.data.clockView}/>
-
-                    <ConstructorPanelBlock onClickSelect={this.onClickSelect} dataUrl={this.state.data.url} />
-
+                    <ConstructorContainerBlock
+                        clockView={this.state.data.clockView}
+                    />
+                    <div className="col-sm-4 constructor-panel-block">
+                        <ConstructorPanelBlock
+                            onClickSelect={this.onClickSelect}
+                            onClickNavigation={this.onClickNavigation}
+                            dataImagesUrl={(this.state.activeNavigation)?
+                                this.state.data.url.dials : this.state.data.url.hands}
+                        />
+                    </div>
                 </div>
             </div>
         );
@@ -165,6 +224,5 @@ class ClockConstructor extends React.Component {
 }
 
 ReactDOM.render(
-    <ClockConstructor/>
-    , document.querySelector('#root-clock-constructor')
+    <ClockConstructor/>, document.querySelector('#root-clock-constructor')
 );

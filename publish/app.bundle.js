@@ -46,41 +46,27 @@ webpackJsonp([0,1],[
 
 	/* left block for construction */
 
-	var ConstructorPanelBlock = function (_React$Component) {
-	    _inherits(ConstructorPanelBlock, _React$Component);
+	function ConstructorPanelBlock(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'constructor-panel' },
+	        _react2.default.createElement(ConstructorPanelNavigation, {
+	            onClickNavigation: props.onClickNavigation
+	        }),
+	        _react2.default.createElement(ConstructorPanelList, {
+	            dataImagesItems: props.dataImagesUrl,
+	            onClickSelect: props.onClickSelect
+	        })
+	    );
+	}
 
-	    function ConstructorPanelBlock() {
-	        _classCallCheck(this, ConstructorPanelBlock);
-
-	        return _possibleConstructorReturn(this, (ConstructorPanelBlock.__proto__ || Object.getPrototypeOf(ConstructorPanelBlock)).apply(this, arguments));
-	    }
-
-	    _createClass(ConstructorPanelBlock, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-4 constructor-panel-block' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'constructor-panel' },
-	                    _react2.default.createElement(ConstructorPanelNavigation, null),
-	                    _react2.default.createElement(ConstructorPanelList, null)
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ConstructorPanelBlock;
-	}(_react2.default.Component);
-
-	function ConstructorPanelNavigation() {
+	function ConstructorPanelNavigation(props) {
 	    return _react2.default.createElement(
 	        'ul',
-	        { className: 'nav nav-tabs nav-justified' },
+	        { className: 'nav nav-tabs nav-justified', onClick: props.onClickNavigation },
 	        _react2.default.createElement(
 	            'li',
-	            { role: 'presentation', className: 'active' },
+	            { role: 'presentation', className: 'navigation active' },
 	            _react2.default.createElement(
 	                'a',
 	                { href: '#' },
@@ -89,7 +75,7 @@ webpackJsonp([0,1],[
 	        ),
 	        _react2.default.createElement(
 	            'li',
-	            { role: 'presentation' },
+	            { role: 'presentation', className: 'navigation' },
 	            _react2.default.createElement(
 	                'a',
 	                { href: '#' },
@@ -99,14 +85,23 @@ webpackJsonp([0,1],[
 	    );
 	}
 
-	function ConstructorPanelList() {
+	function ConstructorPanelList(props) {
+	    var dataImagesItems = props.dataImagesItems,
+	        onClickSelect = props.onClickSelect;
+
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'constructor-panel-list' },
 	        _react2.default.createElement(
 	            'div',
 	            { className: 'col-sm-12 constructor-panel-list-view' },
-	            _react2.default.createElement(ConstructorPanelListItem, null)
+	            dataImagesItems.map(function (imageUrl, key) {
+	                return _react2.default.createElement(ConstructorPanelListItem, {
+	                    imageUrl: imageUrl,
+	                    onClickSelectItem: onClickSelect,
+	                    className: key
+	                });
+	            })
 	        ),
 	        _react2.default.createElement(
 	            'div',
@@ -121,6 +116,10 @@ webpackJsonp([0,1],[
 	}
 
 	function ConstructorPanelListItem(props) {
+	    var imageUrl = props.imageUrl,
+	        onClickSelectItem = props.onClickSelectItem,
+	        className = props.className;
+
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'col-xs-6 col-md-4' },
@@ -128,31 +127,28 @@ webpackJsonp([0,1],[
 	            'a',
 	            { href: '#', className: 'thumbnail item-vinyl' },
 	            _react2.default.createElement('img', {
-	                src: props.url,
+	                src: imageUrl,
 	                alt: '...',
-	                onClick: props.onClickSelect
+	                onClick: onClickSelectItem,
+	                className: className,
+	                id: ''
 	            })
 	        )
 	    );
 	}
 	/* Root App Component */
 
-	var ClockConstructor = function (_React$Component2) {
-	    _inherits(ClockConstructor, _React$Component2);
+	var ClockConstructor = function (_React$Component) {
+	    _inherits(ClockConstructor, _React$Component);
 
 	    function ClockConstructor(props) {
 	        _classCallCheck(this, ClockConstructor);
 
-	        var _this2 = _possibleConstructorReturn(this, (ClockConstructor.__proto__ || Object.getPrototypeOf(ClockConstructor)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (ClockConstructor.__proto__ || Object.getPrototypeOf(ClockConstructor)).call(this, props));
 
-	        _this2.state = {
+	        _this.state = {
 	            data: {
 	                url: {
-	                    /*vinyls: ["",
-	                        "https://lh5.googleusercontent.com/BilGV9eQOu_iNalyYO-feYcBE4FQrVv4mbV4v5XQ_GqOswS1j2-4gfkBiKjrUNrO9qn-7jR7w9RkLA=w1855-h966-rw",
-	                        "https://lh4.googleusercontent.com/QSxsk5H45Pq3pzDk4YbvXcJFNbZG9n057epHR8ftbbTuCnD_HyOQABBGKa7OPQ5-VwYA8bdPhWliwg=w1855-h966-rw"
-	                    ],*/
-
 	                    dials: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTiw_LCy5zSQBIttIJpydFwN0uWuBys-iIMoI8Z0_K4bUoJWfF5", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSJPojTE0t0_BWauA9w7SfXhTvtAfDI9vkBteVTIRA9U0hLCJFb", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5b9BCpzLQujYx83B9H2D_m3E9cJFmWn4Mo3VZOIL3i32m5sH0", "http://www.clipartbest.com/cliparts/4Tb/4Ao/4Tb4AoGEc.png"],
 	                    hands: ["../src/images/h1.png", "../src/images/h2.png", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRt3UdEXolFOr8qCZmAMNtgdqAgdvcP-x1mbydOXi285dHh_WSo", "http://www.electrictime.com/wp-content/themes/etime-canvas/dial-hands/images/hand_AS.gif", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=55428835"]
 
@@ -162,23 +158,73 @@ webpackJsonp([0,1],[
 	                    dials: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA",
 	                    hands: "../src/images/h1.png"
 	                }
-	            }
+	            },
+	            activeNavigation: true // true - active dials / false - active hands
 	        };
-	        _this2.onClickSelect = _this2.onClickSelect.bind(_this2);
-	        return _this2;
+	        _this.onClickSelect = _this.onClickSelect.bind(_this);
+	        _this.onClickNavigation = _this.onClickNavigation.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(ClockConstructor, [{
 	        key: 'onClickSelect',
 	        value: function onClickSelect(element) {
 
-	            console.log(element.target.parentNode);
+	            var activeDialKey = void 0,
+	                activeDial = void 0,
+	                activeHandKey = void 0,
+	                activeHand = void 0;
+	            if (this.state.activeNavigation) {
+	                if (element.target.id === "active-dials") {
+	                    element.target.id = "";
+	                } else {
+	                    if (document.querySelector('#active-dials')) {
+	                        document.querySelector('#active-dials').id = "";
+	                    }
+	                    element.target.id = "active-dials";
+	                    activeDialKey = parseInt(document.querySelector("#active-dials").className);
+	                }
+	            } else {
+	                if (element.target.id === "active-hands") {
+	                    element.target.id = "";
+	                } else {
+	                    if (document.querySelector('#active-hands')) {
+	                        document.querySelector('#active-hands').id = "";
+	                    }
+	                    element.target.id = "active-hands";
+	                    activeHandKey = parseInt(document.getElementById("active-hands").className);
+	                }
+	            }
+
+	            activeDial = this.state.data.url.dials[activeDialKey];
+	            activeHand = this.state.data.url.hands[activeHandKey];
+	            // element.target.id = `active-${(this.state.activeNavigation)? 'dials' : 'hands'}`;
 
 	            this.setState({
 	                data: {
-	                    clockView: element.target.src
+	                    clockView: {
+	                        dials: activeDial,
+	                        hands: activeHand
+	                    }
 	                }
 	            });
+	        }
+	    }, {
+	        key: 'onClickNavigation',
+	        value: function onClickNavigation() {
+	            this.setState({
+	                activeNavigation: !this.state.activeNavigation
+	            });
+
+	            var elementsNavigation = document.querySelectorAll(".navigation");
+	            if (this.state.activeNavigation) {
+	                // navigation 0 - dials; 1 - hands;
+	                elementsNavigation[0].className = 'navigation';
+	                elementsNavigation[1].className = 'navigation active';
+	            } else {
+	                elementsNavigation[1].className = 'navigation';
+	                elementsNavigation[0].className = 'navigation active';
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -190,8 +236,18 @@ webpackJsonp([0,1],[
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
-	                    _react2.default.createElement(ConstructorContainerBlock, { clockView: this.state.data.clockView }),
-	                    _react2.default.createElement(ConstructorPanelBlock, { onClickSelect: this.onClickSelect, dataUrl: this.state.data.url })
+	                    _react2.default.createElement(ConstructorContainerBlock, {
+	                        clockView: this.state.data.clockView
+	                    }),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col-sm-4 constructor-panel-block' },
+	                        _react2.default.createElement(ConstructorPanelBlock, {
+	                            onClickSelect: this.onClickSelect,
+	                            onClickNavigation: this.onClickNavigation,
+	                            dataImagesUrl: this.state.activeNavigation ? this.state.data.url.dials : this.state.data.url.hands
+	                        })
+	                    )
 	                )
 	            );
 	        }
