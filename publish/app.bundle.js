@@ -32,7 +32,7 @@ webpackJsonp([0,1],[
 	            'div',
 	            { className: 'constructor-container center-block' },
 	            _react2.default.createElement('img', { className: 'vinyl-view',
-	                src: props.clockView.vinyls,
+	                src: '../src/images/1.png',
 	                alt: '' }),
 	            _react2.default.createElement('img', { className: 'dial-view',
 	                src: props.clockView.dials,
@@ -152,13 +152,14 @@ webpackJsonp([0,1],[
 	                    dials: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTiw_LCy5zSQBIttIJpydFwN0uWuBys-iIMoI8Z0_K4bUoJWfF5", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSJPojTE0t0_BWauA9w7SfXhTvtAfDI9vkBteVTIRA9U0hLCJFb", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5b9BCpzLQujYx83B9H2D_m3E9cJFmWn4Mo3VZOIL3i32m5sH0", "http://www.clipartbest.com/cliparts/4Tb/4Ao/4Tb4AoGEc.png"],
 	                    hands: ["../src/images/h1.png", "../src/images/h2.png", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRt3UdEXolFOr8qCZmAMNtgdqAgdvcP-x1mbydOXi285dHh_WSo", "http://www.electrictime.com/wp-content/themes/etime-canvas/dial-hands/images/hand_AS.gif", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=55428835"]
 
-	                },
-	                clockView: {
-	                    vinyls: "../src/images/1.png",
-	                    dials: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA",
-	                    hands: "../src/images/h1.png"
 	                }
 	            },
+
+	            clockView: {
+	                dials: "",
+	                hands: ""
+	            },
+
 	            activeNavigation: true // true - active dials / false - active hands
 	        };
 	        _this.onClickSelect = _this.onClickSelect.bind(_this);
@@ -170,44 +171,44 @@ webpackJsonp([0,1],[
 	        key: 'onClickSelect',
 	        value: function onClickSelect(element) {
 
-	            var activeDialKey = void 0,
-	                activeDial = void 0,
-	                activeHandKey = void 0,
-	                activeHand = void 0;
+	            var activeDialKey = '',
+	                activeDial = this.state.clockView.dials,
+	                activeHandKey = '',
+	                activeHand = this.state.clockView.hands;
+
 	            if (this.state.activeNavigation) {
-	                if (element.target.id === "active-dials") {
-	                    element.target.id = "";
+	                if (element.target.parentNode.id === "active-dials") {
+	                    element.target.parentNode.id = "";
+	                    activeDial = '';
 	                } else {
 	                    if (document.querySelector('#active-dials')) {
 	                        document.querySelector('#active-dials').id = "";
 	                    }
-	                    element.target.id = "active-dials";
-	                    activeDialKey = parseInt(document.querySelector("#active-dials").className);
+	                    element.target.parentNode.id = "active-dials";
+	                    activeDialKey = parseInt(document.querySelector("#active-dials img").className);
+	                    activeDial = this.state.data.url.dials[activeDialKey];
 	                }
 	            } else {
-	                if (element.target.id === "active-hands") {
-	                    element.target.id = "";
+	                if (element.target.parentNode.id === "active-hands") {
+	                    element.target.parentNode.id = "";
+	                    activeHand = '';
 	                } else {
 	                    if (document.querySelector('#active-hands')) {
 	                        document.querySelector('#active-hands').id = "";
 	                    }
-	                    element.target.id = "active-hands";
-	                    activeHandKey = parseInt(document.getElementById("active-hands").className);
+	                    element.target.parentNode.id = "active-hands";
+	                    activeHandKey = parseInt(document.querySelector("#active-hands img").className);
+	                    activeHand = this.state.data.url.hands[activeHandKey];
 	                }
 	            }
 
-	            activeDial = this.state.data.url.dials[activeDialKey];
-	            activeHand = this.state.data.url.hands[activeHandKey];
-	            // element.target.id = `active-${(this.state.activeNavigation)? 'dials' : 'hands'}`;
-
 	            this.setState({
-	                data: {
-	                    clockView: {
-	                        dials: activeDial,
-	                        hands: activeHand
-	                    }
+	                clockView: {
+	                    dials: activeDial,
+	                    hands: activeHand
 	                }
 	            });
+	            console.log(this.state);
 	        }
 	    }, {
 	        key: 'onClickNavigation',
@@ -239,7 +240,7 @@ webpackJsonp([0,1],[
 	                    'div',
 	                    { className: 'row' },
 	                    _react2.default.createElement(ConstructorContainerBlock, {
-	                        clockView: this.state.data.clockView
+	                        clockView: this.state.clockView
 	                    }),
 	                    _react2.default.createElement(
 	                        'div',

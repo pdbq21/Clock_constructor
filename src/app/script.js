@@ -12,8 +12,8 @@ function ConstructorContainerBlock(props) {
             <div className="constructor-container center-block">
 
                 <img className="vinyl-view"
-                    src={props.clockView.vinyls}
-                    alt=""/>
+                    src="../src/images/1.png"
+                        alt=""/>
                 <img className="dial-view"
                     src={props.clockView.dials}
                     alt=""/>
@@ -127,13 +127,14 @@ class ClockConstructor extends React.Component {
                         "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=55428835",
                     ],
 
-                },
-                clockView: {
-                    vinyls: "../src/images/1.png",
-                    dials: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA",
-                    hands: "../src/images/h1.png"
                 }
             },
+
+            clockView: {
+                dials: "",
+                hands: ""
+            },
+
             activeNavigation: true // true - active dials / false - active hands
         };
         this.onClickSelect = this.onClickSelect.bind(this);
@@ -142,44 +143,44 @@ class ClockConstructor extends React.Component {
 
     onClickSelect(element) {
 
-        let activeDialKey,
-            activeDial,
-            activeHandKey,
-            activeHand;
+       let activeDialKey = '',
+            activeDial = this.state.clockView.dials,
+            activeHandKey = '',
+            activeHand = this.state.clockView.hands;
+
         if (this.state.activeNavigation){
-            if ( element.target.id === "active-dials"){
-                element.target.id = "";
+            if ( element.target.parentNode.id === "active-dials"){
+                element.target.parentNode.id = "";
+                activeDial = '';
             }else{
                 if (document.querySelector('#active-dials')){
                     document.querySelector('#active-dials').id="";
                 }
-                element.target.id = "active-dials";
-                activeDialKey = parseInt(document.querySelector("#active-dials").className);
+                element.target.parentNode.id = "active-dials";
+                activeDialKey = parseInt(document.querySelector("#active-dials img").className);
+                activeDial = this.state.data.url.dials[activeDialKey];
             }
         }else{
-            if ( element.target.id === "active-hands"){
-                element.target.id = "";
+            if ( element.target.parentNode.id === "active-hands"){
+                element.target.parentNode.id = "";
+                activeHand = '';
             }else{
                 if (document.querySelector('#active-hands')){
                     document.querySelector('#active-hands').id="";
                 }
-                element.target.id = "active-hands";
-                activeHandKey = parseInt(document.getElementById("active-hands").className);
+                element.target.parentNode.id = "active-hands";
+                activeHandKey = parseInt(document.querySelector("#active-hands img").className);
+                activeHand = this.state.data.url.hands[activeHandKey];
             }
         }
 
-        activeDial = this.state.data.url.dials[activeDialKey];
-        activeHand = this.state.data.url.hands[activeHandKey];
-       // element.target.id = `active-${(this.state.activeNavigation)? 'dials' : 'hands'}`;
-
         this.setState({
-            data: {
                 clockView: {
                     dials: activeDial,
                     hands: activeHand
                 }
-            }
         });
+        console.log(this.state);
     }
 
     onClickNavigation(element){
@@ -208,7 +209,7 @@ class ClockConstructor extends React.Component {
             <div className="container constructor">
                 <div className="row">
                     <ConstructorContainerBlock
-                        clockView={this.state.data.clockView}
+                        clockView={this.state.clockView}
                     />
                     <div className="col-sm-4 constructor-panel-block">
                         <ConstructorPanelBlock

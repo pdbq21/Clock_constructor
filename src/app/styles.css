@@ -76,6 +76,14 @@ height: 52.858em;;
 .item-vinyl:focus{
     border: 1px solid #408a26!important;
 }
+.item-vinyl img{
+    height: 6em;
+    width: 6em;
+}
+
+#active-dials , #active-hands{
+    /*border: 1px solid #408a26!important;*/
+}
 .vinyl-success{
     position: absolute;
     top: 85%;
