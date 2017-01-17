@@ -139,6 +139,18 @@ class ClockConstructor extends React.Component {
             activeHandKey = '',
             activeHand = this.state.clockView.hands;
 
+        // TODO: change registration active element
+        // index array from data.url. for navigation
+
+        if (this.state.activeNavigation){
+
+console.log(document.getElementsByClassName('constructor-panel-list-view')[0].childNodes[indexDials]);
+
+        }else{
+
+        }
+
+// old registration active element
         if (this.state.activeNavigation) {
             if (element.target.parentNode.id === "active-dials") {
                 element.target.parentNode.id = "";

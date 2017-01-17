@@ -55,8 +55,7 @@ webpackJsonp([0,1],[
 	        }),
 	        _react2.default.createElement(ConstructorPanelList, {
 	            dataImagesItems: props.dataImagesUrl,
-	            onClickSelect: props.onClickSelect,
-	            dialsOrHands: props.dialsOrHands
+	            onClickSelect: props.onClickSelect
 	        })
 	    );
 	}
@@ -88,28 +87,15 @@ webpackJsonp([0,1],[
 
 	function ConstructorPanelList(props) {
 	    var dataImagesItems = props.dataImagesItems,
-	        onClickSelect = props.onClickSelect,
-	        dialsOrHands = props.dialsOrHands;
+	        onClickSelect = props.onClickSelect;
 
-	    var listItems = void 0;
-	    if (dialsOrHands === 'dials') {
-	        listItems = dataImagesItems.map(function (imageUrl, key) {
-	            return _react2.default.createElement(ConstructorPanelListItemDials, {
-	                imageUrl: imageUrl,
-	                onClickSelectItem: onClickSelect,
-	                className: key
-	            });
+	    var listItems = dataImagesItems.map(function (imageUrl, key) {
+	        return _react2.default.createElement(ConstructorPanelListItem, {
+	            imageUrl: imageUrl,
+	            onClickSelectItem: onClickSelect,
+	            className: key
 	        });
-	    } else {
-	        listItems = dataImagesItems.map(function (imageUrl, key) {
-	            return _react2.default.createElement(ConstructorPanelListItemHands, {
-	                imageUrl: imageUrl,
-	                onClickSelectItem: onClickSelect,
-	                className: key
-	            });
-	        });
-	    }
-
+	    });
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'constructor-panel-list' },
@@ -130,29 +116,7 @@ webpackJsonp([0,1],[
 	    );
 	}
 
-	function ConstructorPanelListItemDials(props) {
-	    var imageUrl = props.imageUrl,
-	        onClickSelectItem = props.onClickSelectItem,
-	        className = props.className;
-
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'col-xs-6 col-md-4' },
-	        _react2.default.createElement(
-	            'a',
-	            { href: '#', className: 'thumbnail item-vinyl' },
-	            _react2.default.createElement('img', {
-	                src: imageUrl,
-	                alt: '...',
-	                onClick: onClickSelectItem,
-	                className: className,
-	                id: ''
-	            })
-	        )
-	    );
-	}
-
-	function ConstructorPanelListItemHands(props) {
+	function ConstructorPanelListItem(props) {
 	    var imageUrl = props.imageUrl,
 	        onClickSelectItem = props.onClickSelectItem,
 	        className = props.className;
@@ -213,13 +177,22 @@ webpackJsonp([0,1],[
 	                activeHandKey = '',
 	                activeHand = this.state.clockView.hands;
 
+	            // TODO: change registration active element
+	            // index array from data.url. for navigation
+
+	            if (this.state.activeNavigation) {
+
+	                console.log(document.getElementsByClassName('constructor-panel-list-view')[0].childNodes[indexDials]);
+	            } else {}
+
+	            // old registration active element
 	            if (this.state.activeNavigation) {
 	                if (element.target.parentNode.id === "active-dials") {
-	                    element.target.parentNode.id = '';
+	                    element.target.parentNode.id = "";
 	                    activeDial = '';
 	                } else {
 	                    if (document.querySelector('#active-dials')) {
-	                        document.querySelector('#active-dials').id = '';
+	                        document.querySelector('#active-dials').id = "";
 	                    }
 	                    element.target.parentNode.id = "active-dials";
 	                    activeDialKey = parseInt(document.querySelector("#active-dials img").className);
@@ -284,8 +257,7 @@ webpackJsonp([0,1],[
 	                        _react2.default.createElement(ConstructorPanelBlock, {
 	                            onClickSelect: this.onClickSelect,
 	                            onClickNavigation: this.onClickNavigation,
-	                            dataImagesUrl: this.state.activeNavigation ? this.state.data.url.dials : this.state.data.url.hands,
-	                            dialsOrHands: this.state.activeNavigation ? 'dials' : 'hands'
+	                            dataImagesUrl: this.state.activeNavigation ? this.state.data.url.dials : this.state.data.url.hands
 	                        })
 	                    )
 	                )
