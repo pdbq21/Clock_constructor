@@ -211,19 +211,21 @@ webpackJsonp([0,1],[
 	        }
 	    }, {
 	        key: 'onClickNavigation',
-	        value: function onClickNavigation() {
-	            this.setState({
-	                activeNavigation: !this.state.activeNavigation
-	            });
+	        value: function onClickNavigation(element) {
 
-	            var elementsNavigation = document.querySelectorAll(".navigation");
-	            if (this.state.activeNavigation) {
-	                // navigation 0 - dials; 1 - hands;
-	                elementsNavigation[0].className = 'navigation';
-	                elementsNavigation[1].className = 'navigation active';
-	            } else {
-	                elementsNavigation[1].className = 'navigation';
-	                elementsNavigation[0].className = 'navigation active';
+	            if (element.target.parentNode.className !== 'navigation active') {
+	                this.setState({
+	                    activeNavigation: !this.state.activeNavigation
+	                });
+	                var elementsNavigation = document.querySelectorAll(".navigation");
+	                if (this.state.activeNavigation) {
+	                    // navigation 0 - dials; 1 - hands;
+	                    elementsNavigation[0].className = 'navigation';
+	                    elementsNavigation[1].className = 'navigation active';
+	                } else {
+	                    elementsNavigation[1].className = 'navigation';
+	                    elementsNavigation[0].className = 'navigation active';
+	                }
 	            }
 	        }
 	    }, {
