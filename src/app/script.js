@@ -38,7 +38,6 @@ function ConstructorPanelBlock(props) {
             <ConstructorPanelList
                 dataImagesItems={props.dataImagesUrl}
                 onClickSelect={props.onClickSelect}
-                dialsOrHands={props.dialsOrHands}
             />
         </div>
     );
@@ -54,22 +53,12 @@ function ConstructorPanelNavigation(props) {
 }
 
 function ConstructorPanelList(props) {
-    let {dataImagesItems, onClickSelect, dialsOrHands} = props;
-    let listItems;
-    if (dialsOrHands === 'dials'){
-        listItems = dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItemDials
-            imageUrl={imageUrl}
-            onClickSelectItem={onClickSelect}
-            className={key}
-        />);
-    } else{
-        listItems = dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItemHands
-            imageUrl={imageUrl}
-            onClickSelectItem={onClickSelect}
-            className={key}
-        />);
-    }
-
+    let {dataImagesItems, onClickSelect} = props;
+    let listItems = dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItem
+        imageUrl={imageUrl}
+        onClickSelectItem={onClickSelect}
+        className={key}
+    />);
     return (
         <div className="constructor-panel-list">
 
@@ -87,25 +76,7 @@ function ConstructorPanelList(props) {
     );
 }
 
-function ConstructorPanelListItemDials(props) {
-    let {imageUrl, onClickSelectItem, className} = props;
-    return (
-        <div className="col-xs-6 col-md-4">
-            <a href="#" className="thumbnail item-vinyl">
-                <img
-                    src={imageUrl}
-                    alt="..."
-                    onClick={onClickSelectItem}
-                    className={className}
-                    id=""
-                />
-
-            </a>
-        </div>
-    );
-}
-
-function ConstructorPanelListItemHands(props) {
+function ConstructorPanelListItem(props) {
     let {imageUrl, onClickSelectItem, className} = props;
     return (
         <div className="col-xs-6 col-md-4">
@@ -162,6 +133,7 @@ class ClockConstructor extends React.Component {
 
     onClickSelect(element) {
 
+
         let activeDialKey = '',
             activeDial = this.state.clockView.dials,
             activeHandKey = '',
@@ -169,11 +141,11 @@ class ClockConstructor extends React.Component {
 
         if (this.state.activeNavigation) {
             if (element.target.parentNode.id === "active-dials") {
-                element.target.parentNode.id = '';
+                element.target.parentNode.id = "";
                 activeDial = '';
             } else {
                 if (document.querySelector('#active-dials')) {
-                    document.querySelector('#active-dials').id = '';
+                    document.querySelector('#active-dials').id = "";
                 }
                 element.target.parentNode.id = "active-dials";
                 activeDialKey = parseInt(document.querySelector("#active-dials img").className);
@@ -234,8 +206,6 @@ class ClockConstructor extends React.Component {
                             onClickNavigation={this.onClickNavigation}
                             dataImagesUrl={(this.state.activeNavigation) ?
                                 this.state.data.url.dials : this.state.data.url.hands}
-                            dialsOrHands={(this.state.activeNavigation) ?
-                                'dials' : 'hands'}
                         />
                     </div>
                 </div>
