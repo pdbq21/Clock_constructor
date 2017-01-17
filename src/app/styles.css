@@ -82,7 +82,7 @@ height: 52.858em;;
 }
 
 #active-dials , #active-hands{
-    /*border: 1px solid #408a26!important;*/
+    border: 1px solid #408a26!important;
 }
 .vinyl-success{
     position: absolute;

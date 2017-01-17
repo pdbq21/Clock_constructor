@@ -12,68 +12,69 @@ function ConstructorContainerBlock(props) {
             <div className="constructor-container center-block">
 
                 <img className="vinyl-view"
-                    src="../src/images/1.png"
-                        alt=""/>
+                     src="../src/images/1.png"
+                     alt=""/>
                 <img className="dial-view"
-                    src={props.clockView.dials}
-                    alt=""/>
+                     src={props.clockView.dials}
+                     alt=""/>
                 <img className="hands-view"
-                    src={props.clockView.hands}
-                    alt=""/>
+                     src={props.clockView.hands}
+                     alt=""/>
             </div>
         </div>
     );
 }
 
 
-
-
-
-
-
 /* left block for construction */
 
 
-
-
-
-function ConstructorPanelBlock(props){
-            return (
-                <div className="constructor-panel">
-                    <ConstructorPanelNavigation
-                        onClickNavigation={props.onClickNavigation}
-                    />
-                    <ConstructorPanelList
-                        dataImagesItems={props.dataImagesUrl}
-                        onClickSelect={props.onClickSelect}
-                    />
-                </div>
-        );
+function ConstructorPanelBlock(props) {
+    return (
+        <div className="constructor-panel">
+            <ConstructorPanelNavigation
+                onClickNavigation={props.onClickNavigation}
+            />
+            <ConstructorPanelList
+                dataImagesItems={props.dataImagesUrl}
+                onClickSelect={props.onClickSelect}
+                dialsOrHands={props.dialsOrHands}
+            />
+        </div>
+    );
 }
 
 function ConstructorPanelNavigation(props) {
     return (
         <ul className="nav nav-tabs nav-justified" onClick={props.onClickNavigation}>
-            <li role="presentation" className="navigation active"><a href="#" >Циферблати</a></li>
+            <li role="presentation" className="navigation active"><a href="#">Циферблати</a></li>
             <li role="presentation" className="navigation"><a href="#">Стрілки</a></li>
         </ul>
     );
 }
 
 function ConstructorPanelList(props) {
-    let {dataImagesItems, onClickSelect} = props;
+    let {dataImagesItems, onClickSelect, dialsOrHands} = props;
+    let listItems;
+    if (dialsOrHands === 'dials'){
+        listItems = dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItemDials
+            imageUrl={imageUrl}
+            onClickSelectItem={onClickSelect}
+            className={key}
+        />);
+    } else{
+        listItems = dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItemHands
+            imageUrl={imageUrl}
+            onClickSelectItem={onClickSelect}
+            className={key}
+        />);
+    }
+
     return (
         <div className="constructor-panel-list">
 
-            <div className="col-sm-12 constructor-panel-list-view" >
-
-                {dataImagesItems.map((imageUrl, key) => <ConstructorPanelListItem
-                    imageUrl={imageUrl}
-                    onClickSelectItem={onClickSelect}
-                    className={key}
-                />)}
-
-
+            <div className="col-sm-12 constructor-panel-list-view">
+                {listItems}
             </div>
 
             <div className="col-sm-12 ">
@@ -86,7 +87,25 @@ function ConstructorPanelList(props) {
     );
 }
 
-function ConstructorPanelListItem(props) {
+function ConstructorPanelListItemDials(props) {
+    let {imageUrl, onClickSelectItem, className} = props;
+    return (
+        <div className="col-xs-6 col-md-4">
+            <a href="#" className="thumbnail item-vinyl">
+                <img
+                    src={imageUrl}
+                    alt="..."
+                    onClick={onClickSelectItem}
+                    className={className}
+                    id=""
+                />
+
+            </a>
+        </div>
+    );
+}
+
+function ConstructorPanelListItemHands(props) {
     let {imageUrl, onClickSelectItem, className} = props;
     return (
         <div className="col-xs-6 col-md-4">
@@ -143,30 +162,31 @@ class ClockConstructor extends React.Component {
 
     onClickSelect(element) {
 
-       let activeDialKey = '',
+        let activeDialKey = '',
             activeDial = this.state.clockView.dials,
             activeHandKey = '',
             activeHand = this.state.clockView.hands;
 
-        if (this.state.activeNavigation){
-            if ( element.target.parentNode.id === "active-dials"){
-                element.target.parentNode.id = "";
+        if (this.state.activeNavigation) {
+            if (element.target.parentNode.id === "active-dials") {
+                element.target.parentNode.id = '';
                 activeDial = '';
-            }else{
-                if (document.querySelector('#active-dials')){
-                    document.querySelector('#active-dials').id="";
+            } else {
+                if (document.querySelector('#active-dials')) {
+                    document.querySelector('#active-dials').id = '';
                 }
                 element.target.parentNode.id = "active-dials";
                 activeDialKey = parseInt(document.querySelector("#active-dials img").className);
                 activeDial = this.state.data.url.dials[activeDialKey];
             }
-        }else{
-            if ( element.target.parentNode.id === "active-hands"){
+
+        } else {
+            if (element.target.parentNode.id === "active-hands") {
                 element.target.parentNode.id = "";
                 activeHand = '';
-            }else{
-                if (document.querySelector('#active-hands')){
-                    document.querySelector('#active-hands').id="";
+            } else {
+                if (document.querySelector('#active-hands')) {
+                    document.querySelector('#active-hands').id = "";
                 }
                 element.target.parentNode.id = "active-hands";
                 activeHandKey = parseInt(document.querySelector("#active-hands img").className);
@@ -175,33 +195,30 @@ class ClockConstructor extends React.Component {
         }
 
         this.setState({
-                clockView: {
-                    dials: activeDial,
-                    hands: activeHand
-                }
+            clockView: {
+                dials: activeDial,
+                hands: activeHand
+            }
         });
-        console.log(this.state);
     }
 
-    onClickNavigation(element){
+    onClickNavigation(element) {
 
-        if (element.target.parentNode.className !== 'navigation active'){
+        if (element.target.parentNode.className !== 'navigation active') {
             this.setState({
                 activeNavigation: !this.state.activeNavigation
             });
             let elementsNavigation = document.querySelectorAll(".navigation");
-            if (this.state.activeNavigation){
+            if (this.state.activeNavigation) {
                 // navigation 0 - dials; 1 - hands;
                 elementsNavigation[0].className = 'navigation';
                 elementsNavigation[1].className = 'navigation active';
-            }else{
+            } else {
                 elementsNavigation[1].className = 'navigation';
                 elementsNavigation[0].className = 'navigation active';
             }
         }
     }
-
-
 
     render() {
 
@@ -215,8 +232,10 @@ class ClockConstructor extends React.Component {
                         <ConstructorPanelBlock
                             onClickSelect={this.onClickSelect}
                             onClickNavigation={this.onClickNavigation}
-                            dataImagesUrl={(this.state.activeNavigation)?
+                            dataImagesUrl={(this.state.activeNavigation) ?
                                 this.state.data.url.dials : this.state.data.url.hands}
+                            dialsOrHands={(this.state.activeNavigation) ?
+                                'dials' : 'hands'}
                         />
                     </div>
                 </div>
