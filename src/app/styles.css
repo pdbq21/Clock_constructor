@@ -73,8 +73,7 @@ height: 52.858em;;
 .item-vinyl{
     position: relative;
 }
-.item-vinyl:hover,
-.item-vinyl:focus{
+.item-vinyl:hover{
     border: 1px solid #408a26!important;
 }
 .item-vinyl img{

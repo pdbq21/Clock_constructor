@@ -8,9 +8,7 @@ import ReactDOM from 'react-dom'
 function ConstructorContainerBlock(props) {
     return (
         <div className="col-sm-8 constructor-container-block">
-
             <div className="constructor-container center-block">
-
                 <img className="vinyl-view"
                      src="../src/images/1.png"
                      alt=""/>
@@ -27,8 +25,6 @@ function ConstructorContainerBlock(props) {
 
 
 /* left block for construction */
-
-
 function ConstructorPanelBlock(props) {
     return (
         <div className="constructor-panel">
@@ -61,17 +57,14 @@ function ConstructorPanelList(props) {
     />);
     return (
         <div className="constructor-panel-list">
-
             <div className="col-sm-12 constructor-panel-list-view">
                 {listItems}
             </div>
-
             <div className="col-sm-12 ">
                 <button type="button" className="btn btn-success ">
                     Готово
                 </button>
             </div>
-
         </div>
     );
 }
@@ -88,14 +81,12 @@ function ConstructorPanelListItem(props) {
                     className={className}
                     id=""
                 />
-
             </a>
         </div>
     );
 }
 
 /* Root App Component */
-
 class ClockConstructor extends React.Component {
 
     constructor(props) {
@@ -117,7 +108,6 @@ class ClockConstructor extends React.Component {
                         "http://www.electrictime.com/wp-content/themes/etime-canvas/dial-hands/images/hand_AS.gif",
                         "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=55428835",
                     ],
-
                 }
             },
 
@@ -138,7 +128,6 @@ class ClockConstructor extends React.Component {
         this.onClickNavigation = this.onClickNavigation.bind(this);
     }
 
-
     onClickSelect(element) {
 
         let activeDialIndex = parseInt(this.state.clockView.dials.index),
@@ -146,8 +135,6 @@ class ClockConstructor extends React.Component {
             activeHandIndex = parseInt(this.state.clockView.hands.index),
             activeHand = this.state.clockView.hands.url;
         if (document.getElementById('active-item-vinyl') !== null) {
-            //document.getElementById('active-item-vinyl').removeChild(document.querySelector('.vinyl-success'));
-            //console.log(document.querySelector('.vinyl-success'));
             document.getElementById('active-item-vinyl').id = '';
         }
         if (this.state.activeNavigation) {
@@ -186,13 +173,6 @@ class ClockConstructor extends React.Component {
             }
         }
 
-        //<em className="glyphicon glyphicon-ok vinyl-success"></em>
-        //var someplace = document.getElementById('some_element_id');
-        //someplace.appendChild(ptag);
-        //document.getElementById('active-item-vinyl').innerHTML += '<em class="glyphicon glyphicon-ok vinyl-success"></em>';
-
-        //document.getElementById('active-item-vinyl').removeChild(document.querySelector('.vinyl-success'));
-
         this.setState({
             clockView: {
                 dials: {
@@ -205,7 +185,6 @@ class ClockConstructor extends React.Component {
                 }
             }
         });
-
     }
 
     onClickNavigation(element) {
@@ -225,7 +204,6 @@ class ClockConstructor extends React.Component {
                 if (this.state.clockView.hands.url) {
                     document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.hands.index].id = 'active-item-vinyl'
                 }
-
             } else {
 
                 elementsNavigation[1].className = 'navigation';
@@ -238,7 +216,6 @@ class ClockConstructor extends React.Component {
     }
 
     render() {
-
         return (
             <div className="container constructor">
                 <div className="row">

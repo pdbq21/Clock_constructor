@@ -45,7 +45,6 @@ webpackJsonp([0,1],[
 	}
 
 	/* left block for construction */
-
 	function ConstructorPanelBlock(props) {
 	    return _react2.default.createElement(
 	        'div',
@@ -153,7 +152,6 @@ webpackJsonp([0,1],[
 	                url: {
 	                    dials: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1_WLO5a0T_txKnNeV4HIN_-_BiGiS8qLwAKTamqwQarWfWxOeA", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTiw_LCy5zSQBIttIJpydFwN0uWuBys-iIMoI8Z0_K4bUoJWfF5", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSJPojTE0t0_BWauA9w7SfXhTvtAfDI9vkBteVTIRA9U0hLCJFb", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT5b9BCpzLQujYx83B9H2D_m3E9cJFmWn4Mo3VZOIL3i32m5sH0", "http://www.clipartbest.com/cliparts/4Tb/4Ao/4Tb4AoGEc.png"],
 	                    hands: ["../src/images/h1.png", "../src/images/h2.png", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRt3UdEXolFOr8qCZmAMNtgdqAgdvcP-x1mbydOXi285dHh_WSo", "http://www.electrictime.com/wp-content/themes/etime-canvas/dial-hands/images/hand_AS.gif", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=55428835"]
-
 	                }
 	            },
 
@@ -184,8 +182,6 @@ webpackJsonp([0,1],[
 	                activeHandIndex = parseInt(this.state.clockView.hands.index),
 	                activeHand = this.state.clockView.hands.url;
 	            if (document.getElementById('active-item-vinyl') !== null) {
-	                //document.getElementById('active-item-vinyl').removeChild(document.querySelector('.vinyl-success'));
-	                //console.log(document.querySelector('.vinyl-success'));
 	                document.getElementById('active-item-vinyl').id = '';
 	            }
 	            if (this.state.activeNavigation) {
@@ -223,13 +219,6 @@ webpackJsonp([0,1],[
 	                    activeHand = this.state.data.url.hands[activeHandIndex];
 	                }
 	            }
-
-	            //<em className="glyphicon glyphicon-ok vinyl-success"></em>
-	            //var someplace = document.getElementById('some_element_id');
-	            //someplace.appendChild(ptag);
-	            //document.getElementById('active-item-vinyl').innerHTML += '<em class="glyphicon glyphicon-ok vinyl-success"></em>';
-
-	            //document.getElementById('active-item-vinyl').removeChild(document.querySelector('.vinyl-success'));
 
 	            this.setState({
 	                clockView: {
@@ -276,7 +265,6 @@ webpackJsonp([0,1],[
 	    }, {
 	        key: 'render',
 	        value: function render() {
-
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'container constructor' },
