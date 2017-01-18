@@ -1,18 +1,19 @@
 const webpack = require("webpack");
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
 
     context: __dirname + "/src",
 
     entry: {
-        app: "./app/script.js"
+        app: "./app/index.js"
     },
     output: {
         path: "./publish",
         filename: "[name].bundle.js"
     },
 
-    watch: true,
+    watch: NODE_ENV === 'development',
 
     watchOptions: {
         aggregateTimeout: 100
@@ -39,10 +40,15 @@ module.exports = {
     },
 
     plugins: [
-        /*new webpack.optimize.UglifyJsPlugin({
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
          warnings: false,
          drop_console: true
-         }),*/
+         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common"
         })

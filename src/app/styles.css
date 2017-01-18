@@ -1,36 +1,29 @@
-.constructor{
-
+.constructor {
     /*test*/
     background-color: #eeeeee;
-height: 52.858em;;
+    height: 52.858em;;
     margin-top: 2em;
 }
 
-.constructor-container{
+.constructor-container {
     background: -webkit-radial-gradient(circle, #fdfdfd, #bbb1b1); /* For Safari 5.1 to 6.0 */
     background: -o-radial-gradient(circle, #fdfdfd, #bbb1b1); /* For Opera 11.6 to 12.0 */
-    background: -moz-radial-gradient(circle,#fdfdfd, #bbb1b1); /* For Fx 3.6 to 15 */
+    background: -moz-radial-gradient(circle, #fdfdfd, #bbb1b1); /* For Fx 3.6 to 15 */
     background: radial-gradient(circle, #fdfdfd, #bbb1b1); /* Standard syntax (must be last) */
-    height: 52.858em;;
-
+    height: 52.858em;
 }
-.constructor-container .vinyl-view{
 
-   /* top: -22%;
-    left: 0px;*/
+.constructor-container .vinyl-view {
     display: block;
     position: absolute;
-    /*padding: 1em;*/
     width: 100%;
-
     z-index: 1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%)
-
 }
 
-.dial-view{
+.dial-view {
     z-index: 2;
     border-radius: 100%;
     position: absolute;
@@ -38,7 +31,8 @@ height: 52.858em;;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-.hands-view{
+
+.hands-view {
     z-index: 2;
     border-radius: 100%;
     position: absolute;
@@ -47,18 +41,20 @@ height: 52.858em;;
     transform: translate(-50%, -50%);
     width: 53em;
 }
+
 .constructor-panel-list-filters .btn-group,
-.constructor-panel-list .btn-success{
+.constructor-panel-list .btn-success {
     margin: 1em 0px;
 }
+
 .constructor-panel-list-filters .btn-group,
 .constructor-panel-list-filters .btn-group .dropdown-toggle,
 .constructor-panel-list-filters .btn-group .dropdown-menu,
-.constructor-panel-list .btn-success{
+.constructor-panel-list .btn-success {
     width: 100%;
 }
 
-.constructor-panel-list-view{
+.constructor-panel-list-view {
     background-color: white;
     padding: 1em 0.5em;
     height: 26em;
@@ -66,25 +62,28 @@ height: 52.858em;;
     border: 1px solid #ccc;
 }
 
-.constructor-panel-list-view .col-md-4{
+.constructor-panel-list-view .col-md-4 {
     padding: 0em 0.5em;
 }
 
-.item-vinyl{
+.item-vinyl {
     position: relative;
 }
-.item-vinyl:hover{
-    border: 1px solid #408a26!important;
+
+.item-vinyl:hover {
+    border: 1px solid #408a26 !important;
 }
-.item-vinyl img{
+
+.item-vinyl img {
     height: 6em;
     width: 6em;
 }
 
-#active-item-vinyl{
-    border: 1px solid #408a26!important;
+#active-item-vinyl {
+    border: 1px solid #408a26 !important;
 }
-.vinyl-success{
+
+.vinyl-success {
     position: absolute;
     top: 85%;
     right: 5%;

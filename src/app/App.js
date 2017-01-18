@@ -3,7 +3,6 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 function ConstructorContainerBlock(props) {
     return (
@@ -58,6 +57,7 @@ function ConstructorPanelList(props) {
         imageUrl={imageUrl}
         onClickSelectItem={onClickSelect}
         className={key}
+        key={`key-${key}`}
     />);
     return (
         <div className="constructor-panel-list">
@@ -91,7 +91,7 @@ function ConstructorPanelListItem(props) {
 }
 
 /* Root App Component */
-class ClockConstructor extends React.Component {
+export default class ClockConstructor extends React.Component {
 
     constructor(props) {
         super(props);
@@ -244,6 +244,3 @@ class ClockConstructor extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <ClockConstructor/>, document.querySelector('#root-clock-constructor')
-);
