@@ -35,10 +35,10 @@ webpackJsonp([0,1],[
 	                src: '../src/images/1.png',
 	                alt: '' }),
 	            _react2.default.createElement('img', { className: 'dial-view',
-	                src: props.clockView.dials,
+	                src: props.clockView.dials.url,
 	                alt: '' }),
 	            _react2.default.createElement('img', { className: 'hands-view',
-	                src: props.clockView.hands,
+	                src: props.clockView.hands.url,
 	                alt: '' })
 	        )
 	    );
@@ -157,8 +157,14 @@ webpackJsonp([0,1],[
 	            },
 
 	            clockView: {
-	                dials: "",
-	                hands: ""
+	                dials: {
+	                    index: '',
+	                    url: ''
+	                },
+	                hands: {
+	                    index: '',
+	                    url: ''
+	                }
 	            },
 
 	            activeNavigation: true // true - active dials / false - active hands
@@ -172,21 +178,47 @@ webpackJsonp([0,1],[
 	        key: 'onClickSelect',
 	        value: function onClickSelect(element) {
 
-	            var activeDialKey = '',
-	                activeDial = this.state.clockView.dials,
-	                activeHandKey = '',
-	                activeHand = this.state.clockView.hands;
+	            var activeDialIndex = parseInt(this.state.clockView.dials.index),
+	                activeDial = this.state.clockView.dials.url,
+	                activeHandIndex = parseInt(this.state.clockView.hands.index),
+	                activeHand = this.state.clockView.hands.url;
 
 	            // TODO: change registration active element
 	            // index array from data.url. for navigation
+	            if (document.getElementById('active-item-vinyl')) {
+	                document.getElementById('active-item-vinyl').id = '';
+	            }
 
 	            if (this.state.activeNavigation) {
 
-	                console.log(document.getElementsByClassName('constructor-panel-list-view')[0].childNodes[indexDials]);
-	            } else {}
+	                if (activeDialIndex) {
+	                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[activeDialIndex].id = 'active-item-vinyl';
+	                }
+
+	                if (element.target.parentNode.id === 'active-item-vinyl') {
+	                    activeDial = '';
+	                    activeDialIndex = '';
+	                } else {
+	                    element.target.parentNode.id = 'active-item-vinyl';
+	                    activeDialIndex = parseInt(document.querySelector("#active-item-vinyl img").className);
+	                    activeDial = this.state.data.url.dials[activeDialIndex];
+	                }
+	            } else {
+	                if (activeHandIndex) {
+	                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[activeHandIndex].id = 'active-item-vinyl';
+	                }
+	                if (element.target.parentNode.id === 'active-item-vinyl') {
+	                    activeHand = '';
+	                    activeHandIndex = '';
+	                } else {
+	                    element.target.parentNode.id = 'active-item-vinyl';
+	                    activeHandIndex = parseInt(document.querySelector("#active-item-vinyl img").className);
+	                    activeHand = this.state.data.url.hands[activeHandIndex];
+	                }
+	            }
 
 	            // old registration active element
-	            if (this.state.activeNavigation) {
+	            /*if (this.state.activeNavigation) {
 	                if (element.target.parentNode.id === "active-dials") {
 	                    element.target.parentNode.id = "";
 	                    activeDial = '';
@@ -198,7 +230,7 @@ webpackJsonp([0,1],[
 	                    activeDialKey = parseInt(document.querySelector("#active-dials img").className);
 	                    activeDial = this.state.data.url.dials[activeDialKey];
 	                }
-	            } else {
+	             } else {
 	                if (element.target.parentNode.id === "active-hands") {
 	                    element.target.parentNode.id = "";
 	                    activeHand = '';
@@ -210,12 +242,18 @@ webpackJsonp([0,1],[
 	                    activeHandKey = parseInt(document.querySelector("#active-hands img").className);
 	                    activeHand = this.state.data.url.hands[activeHandKey];
 	                }
-	            }
+	            }*/
 
 	            this.setState({
 	                clockView: {
-	                    dials: activeDial,
-	                    hands: activeHand
+	                    dials: {
+	                        index: activeDialIndex,
+	                        url: activeDial
+	                    },
+	                    hands: {
+	                        index: activeHandIndex,
+	                        url: activeHand
+	                    }
 	                }
 	            });
 	        }
@@ -232,9 +270,16 @@ webpackJsonp([0,1],[
 	                    // navigation 0 - dials; 1 - hands;
 	                    elementsNavigation[0].className = 'navigation';
 	                    elementsNavigation[1].className = 'navigation active';
+	                    if (this.state.clockView.hands.url) {
+	                        document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.hands.index].id = 'active-item-vinyl';
+	                    }
 	                } else {
+
 	                    elementsNavigation[1].className = 'navigation';
 	                    elementsNavigation[0].className = 'navigation active';
+	                    if (this.state.clockView.dials.url) {
+	                        document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.dials.index].id = 'active-item-vinyl';
+	                    }
 	                }
 	            }
 	        }

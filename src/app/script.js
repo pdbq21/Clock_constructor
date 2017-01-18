@@ -15,10 +15,10 @@ function ConstructorContainerBlock(props) {
                      src="../src/images/1.png"
                      alt=""/>
                 <img className="dial-view"
-                     src={props.clockView.dials}
+                     src={props.clockView.dials.url}
                      alt=""/>
                 <img className="hands-view"
-                     src={props.clockView.hands}
+                     src={props.clockView.hands.url}
                      alt=""/>
             </div>
         </div>
@@ -121,8 +121,14 @@ class ClockConstructor extends React.Component {
             },
 
             clockView: {
-                dials: "",
-                hands: ""
+                dials: {
+                    index: '',
+                    url: ''
+                },
+                hands: {
+                    index: '',
+                    url: ''
+                }
             },
 
             activeNavigation: true // true - active dials / false - active hands
@@ -134,24 +140,48 @@ class ClockConstructor extends React.Component {
     onClickSelect(element) {
 
 
-        let activeDialKey = '',
-            activeDial = this.state.clockView.dials,
-            activeHandKey = '',
-            activeHand = this.state.clockView.hands;
+        let activeDialIndex = parseInt(this.state.clockView.dials.index),
+            activeDial = this.state.clockView.dials.url,
+            activeHandIndex = parseInt(this.state.clockView.hands.index),
+            activeHand = this.state.clockView.hands.url;
 
         // TODO: change registration active element
         // index array from data.url. for navigation
+if(document.getElementById('active-item-vinyl')){
+    document.getElementById('active-item-vinyl').id = '';
+}
 
         if (this.state.activeNavigation){
 
-console.log(document.getElementsByClassName('constructor-panel-list-view')[0].childNodes[indexDials]);
+            if (activeDialIndex) {
+                document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[activeDialIndex].id = 'active-item-vinyl'
+            }
 
-        }else{
+            if (element.target.parentNode.id === 'active-item-vinyl'){
+                activeDial = '';
+                activeDialIndex = '';
+            } else {
+                element.target.parentNode.id = 'active-item-vinyl';
+                activeDialIndex = parseInt(document.querySelector("#active-item-vinyl img").className);
+                activeDial = this.state.data.url.dials[activeDialIndex];
+            }
 
+        } else {
+            if (activeHandIndex) {
+                document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[activeHandIndex].id = 'active-item-vinyl'
+            }
+            if (element.target.parentNode.id === 'active-item-vinyl'){
+                activeHand = '';
+                activeHandIndex = '';
+            } else {
+                element.target.parentNode.id = 'active-item-vinyl';
+                activeHandIndex = parseInt(document.querySelector("#active-item-vinyl img").className);
+                activeHand = this.state.data.url.hands[activeHandIndex];
+            }
         }
 
 // old registration active element
-        if (this.state.activeNavigation) {
+        /*if (this.state.activeNavigation) {
             if (element.target.parentNode.id === "active-dials") {
                 element.target.parentNode.id = "";
                 activeDial = '';
@@ -176,14 +206,21 @@ console.log(document.getElementsByClassName('constructor-panel-list-view')[0].ch
                 activeHandKey = parseInt(document.querySelector("#active-hands img").className);
                 activeHand = this.state.data.url.hands[activeHandKey];
             }
-        }
+        }*/
 
         this.setState({
             clockView: {
-                dials: activeDial,
-                hands: activeHand
+                dials: {
+                    index: activeDialIndex,
+                    url: activeDial,
+                },
+                hands: {
+                    index: activeHandIndex,
+                    url: activeHand
+                }
             }
         });
+
     }
 
     onClickNavigation(element) {
@@ -197,9 +234,17 @@ console.log(document.getElementsByClassName('constructor-panel-list-view')[0].ch
                 // navigation 0 - dials; 1 - hands;
                 elementsNavigation[0].className = 'navigation';
                 elementsNavigation[1].className = 'navigation active';
+                if (this.state.clockView.hands.url) {
+                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.hands.index].id = 'active-item-vinyl'
+                }
+
             } else {
+
                 elementsNavigation[1].className = 'navigation';
                 elementsNavigation[0].className = 'navigation active';
+                if (this.state.clockView.dials.url) {
+                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.dials.index].id = 'active-item-vinyl'
+                }
             }
         }
     }
