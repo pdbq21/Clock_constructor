@@ -42,8 +42,12 @@ function ConstructorPanelBlock(props) {
 function ConstructorPanelNavigation(props) {
     return (
         <ul className="nav nav-tabs nav-justified" onClick={props.onClickNavigation}>
-            <li role="presentation" className="navigation active"><a href="#">Циферблати</a></li>
-            <li role="presentation" className="navigation"><a href="#">Стрілки</a></li>
+            <li role="presentation" className="navigation active">
+                <a href="#">Циферблати</a>
+            </li>
+            <li role="presentation" className="navigation">
+                <a href="#">Стрілки</a>
+            </li>
         </ul>
     );
 }
@@ -126,6 +130,13 @@ class ClockConstructor extends React.Component {
         };
         this.onClickSelect = this.onClickSelect.bind(this);
         this.onClickNavigation = this.onClickNavigation.bind(this);
+        this.isActiveItemVinyl = this.isActiveItemVinyl.bind(this);
+    }
+
+    isActiveItemVinyl(){
+        if (document.getElementById('active-item-vinyl') !== null) {
+            document.getElementById('active-item-vinyl').id = '';
+        }
     }
 
     onClickSelect(element) {
@@ -134,13 +145,14 @@ class ClockConstructor extends React.Component {
             activeDial = this.state.clockView.dials.url,
             activeHandIndex = parseInt(this.state.clockView.hands.index),
             activeHand = this.state.clockView.hands.url;
-        if (document.getElementById('active-item-vinyl') !== null) {
-            document.getElementById('active-item-vinyl').id = '';
-        }
+
+        (this.isActiveItemVinyl)();
+
         if (this.state.activeNavigation) {
 
             if (activeDial) {
-                document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[activeDialIndex].id = 'active-item-vinyl'
+                document.querySelectorAll('.constructor-panel-list-view .item-vinyl')
+                    [activeDialIndex].id = 'active-item-vinyl'
             }
 
             if (element.target.parentNode.id === 'active-item-vinyl') {
@@ -148,25 +160,22 @@ class ClockConstructor extends React.Component {
                 activeDial = '';
                 activeDialIndex = '';
             } else {
-                if (document.getElementById('active-item-vinyl') !== null){
-                    document.getElementById('active-item-vinyl').id = '';
-                }
+                (this.isActiveItemVinyl)();
                 element.target.parentNode.id = 'active-item-vinyl';
                 activeDialIndex = parseInt(document.querySelector('#active-item-vinyl img').className);
                 activeDial = this.state.data.url.dials[activeDialIndex];
             }
         } else {
             if (activeHand) {
-                document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[activeHandIndex].id = 'active-item-vinyl'
+                document.querySelectorAll('.constructor-panel-list-view .item-vinyl')
+                    [activeHandIndex].id = 'active-item-vinyl'
             }
             if (element.target.parentNode.id === 'active-item-vinyl') {
                 element.target.parentNode.id = '';
                 activeHand = '';
                 activeHandIndex = '';
             } else {
-                if (document.getElementById('active-item-vinyl') !== null){
-                    document.getElementById('active-item-vinyl').id = '';
-                }
+                (this.isActiveItemVinyl)();
                 element.target.parentNode.id = 'active-item-vinyl';
                 activeHandIndex = parseInt(document.querySelector('#active-item-vinyl img').className);
                 activeHand = this.state.data.url.hands[activeHandIndex];
@@ -194,22 +203,21 @@ class ClockConstructor extends React.Component {
                 activeNavigation: !this.state.activeNavigation
             });
             let elementsNavigation = document.querySelectorAll(".navigation");
-            if (document.getElementById('active-item-vinyl')) {
-                document.getElementById('active-item-vinyl').id = '';
-            }
+            (this.isActiveItemVinyl)();
             if (this.state.activeNavigation) {
                 // navigation 0 - dials; 1 - hands;
                 elementsNavigation[0].className = 'navigation';
                 elementsNavigation[1].className = 'navigation active';
                 if (this.state.clockView.hands.url) {
-                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.hands.index].id = 'active-item-vinyl'
+                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')
+                        [this.state.clockView.hands.index].id = 'active-item-vinyl'
                 }
             } else {
-
                 elementsNavigation[1].className = 'navigation';
                 elementsNavigation[0].className = 'navigation active';
                 if (this.state.clockView.dials.url) {
-                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')[this.state.clockView.dials.index].id = 'active-item-vinyl'
+                    document.querySelectorAll('.constructor-panel-list-view .item-vinyl')
+                        [this.state.clockView.dials.index].id = 'active-item-vinyl'
                 }
             }
         }
